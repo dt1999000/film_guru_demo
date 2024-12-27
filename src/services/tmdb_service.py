@@ -1,5 +1,4 @@
 import requests
-import json
 import os
 
 api_key = os.getenv("TMDB_API_KEY")
@@ -33,21 +32,50 @@ def fetch_data(endpoint, api_key, optional_params=None):
         return response.json()
     except requests.exceptions.RequestException as e:
         raise RuntimeError(f"Request failed: {e}")
-
-if __name__ == "__main__":
+def fetch_now_playing(language='en-US', region=None, page=1):
     endpoint = "/movie/now_playing"
-    response = fetch_data(endpoint, api_key)
-    print('now in cinema' + json.dumps(response, indent=2))
+    params = {
+        "language": language,
+        "region": region,
+        "page": page
+    }
+    return fetch_data(endpoint, api_key, params)
 
+def fetch_popular_movies(language='en-US', region=None, page=1):
     endpoint = "/movie/popular"
-    response = fetch_data(endpoint, api_key)
-    print('popular' + json.dumps(response, indent=2))
+    params = {
+        "language": language,
+        "region": region,
+        "page": page
+    }
+    return fetch_data(endpoint, api_key, params)
 
+def fetch_top_rated_movies(language='en-US', region=None, page=1):
     endpoint = "/movie/top_rated"
-    response = fetch_data(endpoint, api_key)
-    print('top rated' + json.dumps(response, indent=2))
+    params = {
+        "language": language,
+        "region": region,
+        "page": page
+    }
+    return fetch_data(endpoint, api_key, params)
 
+def fetch_upcoming_movies(language='en-US', region=None, page=1):
     endpoint = "/movie/upcoming"
-    response = fetch_data(endpoint, api_key)
-    print('upcoming' + json.dumps(response, indent=2))
+    params = {
+        "language": language,
+        "region": region,
+        "page": page
+    }
+    return fetch_data(endpoint, api_key, params)
 
+def search_movies(query, language='en-US', page=1, include_adult=False, region=None, year=None):
+    endpoint = "/search/movie"
+    params = {
+        "query": query,
+        "language": language,
+        "page": page,
+        "include_adult": include_adult,
+        "region": region,
+        "year": year
+    }
+    return fetch_data(endpoint, api_key, params)

@@ -2,3 +2,8 @@ streamlit
 requests
 python-dotenv
 jsonschema
+sqlmodel
+sqlalchemy
+psycopg2-binary
+fastapi
+uvicorn

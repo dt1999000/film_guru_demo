@@ -32,7 +32,8 @@ def fetch_data(endpoint, api_key, optional_params=None):
         return response.json()
     except requests.exceptions.RequestException as e:
         raise RuntimeError(f"Request failed: {e}")
-def fetch_now_playing(language='en-US', region=None, page=1):
+        
+def fetch_now_playing(language='en-US', region=DE, page=1):
     endpoint = "/movie/now_playing"
     params = {
         "language": language,
@@ -41,7 +42,7 @@ def fetch_now_playing(language='en-US', region=None, page=1):
     }
     return fetch_data(endpoint, api_key, params)
 
-def fetch_popular_movies(language='en-US', region=None, page=1):
+def fetch_popular_movies(language='en-US', region=DE, page=1):
     endpoint = "/movie/popular"
     params = {
         "language": language,
@@ -50,7 +51,7 @@ def fetch_popular_movies(language='en-US', region=None, page=1):
     }
     return fetch_data(endpoint, api_key, params)
 
-def fetch_top_rated_movies(language='en-US', region=None, page=1):
+def fetch_top_rated_movies(language='en-US', region=DE, page=1):
     endpoint = "/movie/top_rated"
     params = {
         "language": language,
@@ -59,7 +60,7 @@ def fetch_top_rated_movies(language='en-US', region=None, page=1):
     }
     return fetch_data(endpoint, api_key, params)
 
-def fetch_upcoming_movies(language='en-US', region=None, page=1):
+def fetch_upcoming_movies(language='en-US', region=DE, page=1):
     endpoint = "/movie/upcoming"
     params = {
         "language": language,
@@ -68,7 +69,7 @@ def fetch_upcoming_movies(language='en-US', region=None, page=1):
     }
     return fetch_data(endpoint, api_key, params)
 
-def search_movies(query, language='en-US', page=1, include_adult=False, region=None, year=None):
+def search_movies(query, language='en-US', page=1, include_adult=False, region=DE, year=None):
     endpoint = "/search/movie"
     params = {
         "query": query,
